@@ -171,13 +171,19 @@ html{  scroll-behavior: smooth;}
   align-items: center;
   justify-content: center;
   z-index: 10;
+   /* Adjust the alpha value (last parameter) to control transparency */
 }
 
 .video {
-  width: 100%; /* Make the video 100% of the container width */
-  height: 100%; /* Make the video 100% of the container height */
-  object-fit: cover;
+  width: 110%; /* Make the video 100% of the container width */
+  height: 130%; /* Make the video 100% of the container height */
+  object-fit: cover; /* Ensures the video fills the entire container */
+  position: absolute; /* Position the video absolutely within its parent container */
+  top: 30;
+  left: 0;
+  z-index: -1; /* Ensures the video is behind any other content */
 }
+
 
 .hero-drone{
   animation: animate 20s linear infinite;

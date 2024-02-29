@@ -74,3 +74,4 @@ const ContentTechnovanza = (props: Props) => {
 }
 
 export default ContentTechnovanza
+
