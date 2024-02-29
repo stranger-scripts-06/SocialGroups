@@ -104,7 +104,7 @@ import {motion} from "framer-motion"
 
 type Props = {}
 
-const Rangawardhan = (props: Props) => {
+const Technovanza = (props: Props) => {
     const [hovered, setHovered] = useState<boolean>(false)
 
     const lineVariant = {
@@ -112,7 +112,7 @@ const Rangawardhan = (props: Props) => {
         show:{height:'100%'}
     }
   return (
-    <div className='flex relative md:pl-10'>
+    <section id="technovanza" className='flex relative md:pl-10'>
     {/* <img alt="" aria-hidden="true" width="2712" height="2712" className="absolute top-0 right-0 h-auto pointer-events-none" loading="lazy" decoding="async" src="https://github.githubassets.com/images/modules/site/home-campaign/bg-stars-1.webp" /> */}
     <div className='flex items-center flex-row relative'>
         <motion.div variants={lineVariant} initial='hidden' whileInView='show' viewport={{once:false}} transition={{duration:0.3}}  className='w-[3px] h-full increase origin-top'></motion.div>
@@ -192,8 +192,9 @@ const Rangawardhan = (props: Props) => {
             </div>
         </motion.div>
     </div>
-</div>
+</section>
+
   )
 }
 
-export default Rangawardhan
+export default Technovanza
