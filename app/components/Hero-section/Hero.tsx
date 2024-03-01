@@ -1,12 +1,80 @@
 'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import styled, { keyframes } from 'styled-components';
 
-type Props = {};
+const showTopText = keyframes`
+  0% { transform: translateY(100%); }
+  40%, 60% { transform: translateY(50%); }
+  100% { transform: translateY(0); }
+`;
 
-const Hero = (props: Props) => {
-    const [hovered, setHovered] = useState<boolean>(false);
+const showBottomText = keyframes`
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+`;
 
+const AnimatedTitleWrapper = styled.div`
+  color: #FFFFFF;
+  font-family: Roboto, Arial, sans-serif;
+  height: 90vmin;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vmin;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adding a subtle shadow */
+
+  & > div {
+    height: 50%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+  }
+
+  & > div div {
+    padding: 2vmin 0;
+    position: absolute;
+    animation-duration: 1.5s; /* Increase animation duration */
+  }
+
+  & > div div span {
+    display: block;
+  }
+
+  & > div.text-top {
+    border-bottom: 1vmin solid #FFFFFF;
+    top: 0;
+  }
+
+  & > div.text-top div {
+    animation: ${showTopText} 1.5s ease-in-out; /* Use ease-in-out timing function */
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    bottom: 0;
+    transform: translateY(100%);
+    font-size: 18vmin; /* Increase the font size of VJTI */
+  }
+
+  & > div.text-top div span:first-child {
+    color: #FFFFFF;
+  }
+
+  & > div.text-bottom {
+    bottom: 0;
+  }
+
+  & > div.text-bottom div {
+    animation: ${showBottomText} 1.5s ease-in-out; /* Use ease-in-out timing function */
+    animation-delay: 1s; /* Adjust animation delay */
+    animation-fill-mode: forwards;
+    top: 0;
+    transform: translateY(-100%);
+    font-size: 14vmin; /* Adjust the font size of Social Group */
+  }
+`;
+
+const Hero = () => {
     const scrollToSection = () => {
         const section = document.getElementById('technovanza');
         if (section) {
@@ -23,14 +91,16 @@ const Hero = (props: Props) => {
                 </video>
                 <div className="overlay">
                     <div className="content">
-                        <motion.h1
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1 }}
-                            className="text-white text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-center font-bold mb-10"
-                        >
-                            VJTI Social Group
-                        </motion.h1>
+                        <AnimatedTitleWrapper>
+                            <div className="text-top">
+                                <div>                                                
+                                    <span>VJTI</span>
+                                </div>
+                            </div>
+                            <div className="text-bottom">
+                                <div>Social Group</div>
+                            </div>
+                        </AnimatedTitleWrapper>
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
